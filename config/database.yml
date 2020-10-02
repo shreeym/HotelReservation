@@ -1,0 +1,8 @@
+development:
+  adapter: mysql2
+  usename: root
+  password: root
+  host:     localhost
+  database:  user_hotel_reservation
+   
+

@@ -1,0 +1,28 @@
+<div class="col-xs-12" style="height: 300px;overflow: scroll;">
+    <table class="table table-striped table-condensed table-responsive">
+       <thead>
+          <tr>
+            
+              <th class="col-xs-2">Room No</th>
+              <th class="col-xs-2">Room Type</th>
+              <th class="col-xs-2">Room Description</th>
+              <th class="col-xs-2">Room Price/night</th>
+               
+               
+          </tr>
+      </thead>    
+      <tbody>
+          <% reserved_rooms.each do |result| %>
+            <tr>
+              
+              <td class="col-xs-2"><%=result.room_no %></td>
+              <td class="col-xs-2"><%=result.room_type.name%></td>
+              <td class="col-xs-2"><%=result.room_type.description %></td>
+              <td class="col-xs-2">$<%=result.room_type.price%></td>
+               
+               
+            </tr>
+          <% end %>  
+      </tbody>
+    </table>
+ </div>

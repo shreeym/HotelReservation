@@ -1,0 +1,110 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.7.1/css/bootstrap-datepicker.min.css" rel="stylesheet"/>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+</head>
+<body>
+
+
+
+<div class="col-xs-12">
+ 
+<div class="col-xs-12 col-md-2">
+<h2>CheckIn </h2>
+  <input id="check_in_date" class="col-xs-12 col-md-12   select_input" placeholder="Enter from-date" style="margin-right: 10px;">
+</div>
+<div class="col-md-2">   
+<h2>CheckOut </h2>             
+   <input  id="check_out_date" class="col-xs-12 col-md-12 select_input" placeholder="Enter to-date" style="margin-right: 10px;">
+  </div>
+  <div></div>
+  <br/><br/><br/>
+  <div id='room_select_div' class=' col-xs-12 col-md-2 label_div '  ">
+                         <label for="room_select_div" class="col-xs-12 col-md-12">
+                         
+                         <select class="select_input fontstyle col-xs-12 col-md-12  selectpicker" data-live-search="true"  id="room_type_select" required >
+                              
+                         <option value="">Select RoomType</option>
+                         <option value=1>Deluxe</option>
+                         <option value=2>Luxury</option>
+                         <option value=3>Luxury Suites</option>
+                         <option value=4> Presidential Suites</option>
+                             
+
+                                           
+                         </select>
+
+                          </label>
+                       </div>
+  <div class="col-xs-12 col-md-4">
+    <button class="btn btn-primary col-xs-12 col-md-8 col-sm-1" id="bar_chart_submit_btn" style="height: 30px;font-size: 12px;">Check Availability</button>
+  </div>
+
+  <%= render 'show'%>
+
+   
+  <%= render 'user_reservations' %>
+  
+
+   
+ 
+   
+
+</div>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.7.1/js/bootstrap-datepicker.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+<script type="text/javascript">
+
+
+
+$('#check_in_date').datepicker({
+    weekStart: 1,
+    format: "yyyy-mm-dd",
+    maxViewMode: 1,
+    daysOfWeekHighlighted: "6,0",
+    autoclose: true,
+    todayHighlight: true
+    
+});
+ 
+    $('#check_out_date').datepicker({
+        weekStart: 1,
+        format: "yyyy-mm-dd",
+        maxViewMode: 1,
+        daysOfWeekHighlighted: "6,0",
+        autoclose: true,
+        todayHighlight: true
+        
+    });
+   
+
+
+     
+    $('#bar_chart_submit_btn').click(function(){
+        $.ajax({
+            type: 'get',
+            url: '/homes/getRooms.js',
+            data: {
+                check_in: $('#check_in_date').val(),
+                check_out: $('#check_out_date').val(),
+                room_type: $('#room_type_select').val()
+
+            },
+            success: function(response){
+                
+                 
+            }
+
+        });
+    })
+
+
+   
+</script>
+</body>
